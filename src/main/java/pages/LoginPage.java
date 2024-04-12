@@ -18,7 +18,12 @@ public class LoginPage extends BasePage {
 	private final By enterButton = By.xpath(formPage + "//button");
 	private final String forgotPasswordLink = mainPage + "//p[2]/a";
 	private final String forgotPasswordLinkHref = "a[href=\"/forgot-password\"]";
-	private final By forwardToRegistrationPage = By.xpath("*//p[1]/a[text()='Зарегистрироваться']");
+
+	private final String registrationButtonText = "Зарегистрироваться";
+	private final By forwardToRegistrationPage = By.xpath("*//p[1]/a[text()='" + registrationButtonText +"']");
+
+	private final String enterSignText = "Вход";
+	private final By enterSign = By.xpath("*//h2[text()='"+enterSignText+"']");
 
 
 
@@ -29,11 +34,13 @@ public class LoginPage extends BasePage {
   public void setUserAuthData(String login,String password){
 	  driver.findElement(inputEmail).sendKeys(login);
 	  driver.findElement(inputPassword).sendKeys(password);
+	  pressEnterButton();
   }
 
   public void pressEnterButton(){
 	  driver.findElement(enterButton).click();
   }
+
 
 
 }

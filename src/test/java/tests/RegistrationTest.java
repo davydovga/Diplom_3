@@ -1,63 +1,74 @@
 package tests;
 
-import api.requests.AuthReq;
 import api.requests.CreateUserReq;
-import api.responses.CreateUserResponse;
-import api.responses.LoginResponse;
-import configuration.Generators;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Test;
 import utils.BaseTest;
 
-import static api.BaseAPI.postReq;
-import static api.CreateUserAPI.*;
+import static api.api.CreateUserAPI.deleteUserAPI;
+import static api.api.CreateUserAPI.loginUserAPI;
+import static configuration.URL.PROFILE_PAGE;
+import static configuration.URL.REGISTER_PAGE;
 import static org.junit.Assert.assertEquals;
 
 
 public class RegistrationTest extends BaseTest {
-    Generators userDataGenerator = new Generators();
-    CreateUserReq createUser = userDataGenerator.createUser();
+
+
 
     @Test
     @DisplayName("Тест успешной регистрации пользователя")
-    @Description("")
+    @Description("Тест запольняет форму регистрации и заходит в ЛК под созданным пользователем")
     public void userRegistrationTest(){
-        /* mainPage.clickLoginButton();
-        loginPage.forwardToRegistrationPage();
+        CreateUserReq createUser = userDataGenerator.createUser();
+
+        //Открытие страницы регистрации
+        driver.get(REGISTER_PAGE);
+
+        //Заполнение формы регистрации
         regPage.setUserDataOnPage(
                 createUser.getEmail(),
                 createUser.getPassword(),
                 createUser.getName()
                 );
 
+        //Нажатие кнопки "Зарегистрироваться" на странице регистрации
         regPage.pressRegistrationButton();
-        //Зайти в аккаунт и сверить
-        loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
-        loginPage.pressEnterButton();
-
-        header.pressPCButton(); */
-
-//        System.out.println(accountProfilePage.getUserEmail());
-//        assertEquals(accountProfilePage.getUserEmail(), createUser.getEmail());
-//        assertEquals(accountProfilePage.getUserName(), createUser.getEmail());
-
-
-        Response crtusr = createUserAPI(createUser);
-        System.out.println("CREATE_USER:");
-        crtusr.prettyPrint();
-
-        AuthReq authReq = new AuthReq(createUser.getEmail(), createUser.getPassword());
-
-
-        Response response = loginUserAPI(authReq);
-        System.out.println("LOGIN_USER:");
-        response.prettyPrint();
-
-
-        String token = response.as(CreateUserResponse.class).getAccessToken().substring(7);
-        System.out.println("TOKEN: " + token);
-//         deleteUserAPI(token);
+        //Нажатие кнопки "Личный кабинет" в хедере на странице регистрации
+        header.pressPCButton();
+        //Заполнение данных для входа
+        loginPage.setUserAuthData(createUser.getEmail(),createUser.getPassword());
+        //Нажатие кнопки "Личный кабинет" в хедере на странице регистрации
+        header.pressPCButton();
+        awaitOfURLChange(PROFILE_PAGE);
+        //Проверка открытия страницы профиля
+        assertEquals("Не удалось попасть в профиль пользователя после регистраци",
+                PROFILE_PAGE, driver.getCurrentUrl());
+        //Получение токена и удаление пользователя
+        Response response = loginUserAPI(createUser);
+        deleteUserAPI(userDataGenerator.parseToken(response));
     }
+
+    @Test
+    @DisplayName("Тест допустимой длины пароля при регистрации")
+    @Description("Тест проверяет что ")
+    public void userBadPasswordRegistrationTest(){
+        CreateUserReq createUserBadPassword = userDataGenerator.createBadPasswordUser();
+
+        //Открытие страницы регистрации
+        driver.get(REGISTER_PAGE);
+        //Заполнение формы регистрации
+        regPage.setUserDataOnPage(
+                createUserBadPassword.getEmail(),
+                createUserBadPassword.getPassword(),
+                createUserBadPassword.getName());
+
+        //Нажатие кнопки "Зарегистрироваться" на странице регистрации
+        regPage.pressRegistrationButton();
+        //Проверка отображения ошибки
+        regPage.checkPasswordError();
+    }
+
 }

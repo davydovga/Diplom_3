@@ -1,11 +1,11 @@
-package api;
+package api.api;
 
-import api.requests.AuthReq;
 import api.requests.CreateUserReq;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-import static api.BaseAPI.*;
+import static api.api.BaseAPI.deleteReq;
+import static api.api.BaseAPI.postReq;
 import static configuration.Endpoints.*;
 
 public class CreateUserAPI {
@@ -17,17 +17,12 @@ public class CreateUserAPI {
     }
 
     @Step("Вызов API авторизации пользователя")
-    public static Response loginUserAPI(AuthReq body){
+    public static Response loginUserAPI(CreateUserReq body){
         return postReq(body, USER_LOGIN_ENDPOINT);
     }
 
-    @Step("Вызов API получение информации о пользователе")
-    public static Response getUserInfoAPI(String token){
-        return getReq(USER_ENDPOINT, token);
-    }
-
     @Step("Вызов API удаления тестового пользователя")
-    public static Response deleteUserAPI(String token){
-        return deleteReq(USER_ENDPOINT, token);
+    public static void deleteUserAPI(String token){
+        deleteReq(USER_ENDPOINT, token);
     }
 }
