@@ -17,7 +17,8 @@ public class MainPageTest extends BaseTest {
     public void forwardToMainByClickBurgerTest(){
         driver.get(LOGIN_PAGE);
         header.pressBurgerButton();
-        awaitOfURLChange(MAIN_PAGE);
+
+        assertCurrentPageIs(MAIN_PAGE);
     }
 
     @Test
@@ -26,6 +27,7 @@ public class MainPageTest extends BaseTest {
     public void forwardToMainByClickConstructorTest(){
         driver.get(LOGIN_PAGE);
         header.pressConstructorButton();
-        awaitOfURLChange(MAIN_PAGE);
+
+        assertCurrentPageIs(MAIN_PAGE);
     }
 }

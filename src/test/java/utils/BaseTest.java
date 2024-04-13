@@ -5,6 +5,7 @@ import configuration.Generators;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -43,12 +44,12 @@ public class BaseTest {
 
 
     @Step("Ожидание загрузки страницы")
-    public void awaitOfURLChange(String URL){
+    public void assertCurrentPageIs(String URL){
         try {
-            new WebDriverWait(driver, 5).until(urlContains(URL));
+            new WebDriverWait(driver, 60).until(urlContains(URL));
         } catch (TimeoutException timeOut){
             System.out.println("Время ожидания загрузки страницы " + URL + " превысило допустимое");
-            timeOut.printStackTrace();
+            Assert.fail();
         }
 
     }

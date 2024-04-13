@@ -17,15 +17,17 @@ public class HeaderTest extends BaseTest {
         driver.get(LOGIN_PAGE);
         loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
         header.pressPCButton();
-        awaitOfURLChange(PROFILE_PAGE);
+
+        assertCurrentPageIs(PROFILE_PAGE);
     }
 
     @Test
-    @DisplayName("Тест перехода в личный кабинет с без авторизации")
+    @DisplayName("Тест перехода в личный кабинет без авторизации")
     @Description("Тест проверяет, что не авторизированный пользователь, при нажатии на кнопку 'Личный Кабиент', попадает на странцу авторизации")
     public void checkHeaderButtonWithoutAuthTest(){
         driver.get(MAIN_PAGE);
         header.pressPCButton();
-        awaitOfURLChange(LOGIN_PAGE);
+
+        assertCurrentPageIs(LOGIN_PAGE);
     }
 }

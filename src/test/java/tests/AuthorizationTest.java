@@ -17,8 +17,9 @@ public class AuthorizationTest extends BaseTest {
 		driver.get(MAIN_PAGE);
 		mainPage.clickLoginButton();
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
+
 		header.pressPCButton();
-		awaitOfURLChange(PROFILE_PAGE);
+		assertCurrentPageIs(PROFILE_PAGE);
 	}
 
 	@Test
@@ -28,8 +29,9 @@ public class AuthorizationTest extends BaseTest {
 		driver.get(MAIN_PAGE);
 		header.pressPCButton();
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
+
 		header.pressPCButton();
-		awaitOfURLChange(PROFILE_PAGE);
+		assertCurrentPageIs(PROFILE_PAGE);
 	}
 
 	@Test
@@ -39,7 +41,8 @@ public class AuthorizationTest extends BaseTest {
 		driver.get(FORGOT_PASSWORD_PAGE);
 		forgotPasswordPage.clickEnterLink();
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
+
 		header.pressPCButton();
-		awaitOfURLChange(PROFILE_PAGE);
+		assertCurrentPageIs(PROFILE_PAGE);
 	}
 }

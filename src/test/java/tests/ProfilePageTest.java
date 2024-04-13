@@ -19,6 +19,7 @@ public class ProfilePageTest extends BaseTest {
         loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
         header.pressPCButton();
         accountProfilePage.clickExitButton();
-        awaitOfURLChange(LOGIN_PAGE);
+
+        assertCurrentPageIs(LOGIN_PAGE);
     }
 }

@@ -25,8 +25,12 @@ public class RegistrationTest extends BaseTest {
         regPage.pressRegistrationButton(); //Нажатие кнопки "Зарегистрироваться" на странице регистрации
         header.pressPCButton(); //Нажатие кнопки "Личный кабинет" в хедере на странице регистрации
         loginPage.setUserAuthData(createUser.getEmail(),createUser.getPassword()); //Заполнение данных для входа
+
+        //Логика проврки авторизации
         header.pressPCButton(); //Нажатие кнопки "Личный кабинет" в хедере на странице регистрации
-        awaitOfURLChange(PROFILE_PAGE); //Проверка открытия страницы профиля
+        assertCurrentPageIs(PROFILE_PAGE); //Проверка открытия страницы профиля
+
+        //Логика удаления тестовых данных
         Response response = loginUserAPI(createUser); //Получение токена и удаление пользователя
         deleteUserAPI(userDataGenerator.parseToken(response));
     }
