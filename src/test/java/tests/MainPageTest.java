@@ -8,6 +8,7 @@ import utils.BaseTest;
 import static configuration.URL.LOGIN_PAGE;
 import static configuration.URL.MAIN_PAGE;
 
+
 public class MainPageTest extends BaseTest {
 
     @Test

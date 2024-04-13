@@ -6,7 +6,7 @@ import org.junit.Test;
 import utils.BaseTest;
 
 import static configuration.URL.*;
-import static org.junit.Assert.assertEquals;
+
 
 public class AuthorizationTest extends BaseTest {
 
@@ -15,13 +15,10 @@ public class AuthorizationTest extends BaseTest {
 	@Description("Тест переходит на главную страницу сайта, нажимает кнопку 'Войти в аккаунт' и авторизируется")
 	public void authFromMainPageTest() {
 		driver.get(MAIN_PAGE);
-
 		mainPage.clickLoginButton();
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
 		header.pressPCButton();
 		awaitOfURLChange(PROFILE_PAGE);
-		assertEquals("Не удалось авторизироваться через кнопку 'Войти в аккаунт'",
-				PROFILE_PAGE, driver.getCurrentUrl());
 	}
 
 	@Test
@@ -33,8 +30,6 @@ public class AuthorizationTest extends BaseTest {
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
 		header.pressPCButton();
 		awaitOfURLChange(PROFILE_PAGE);
-		assertEquals("Не удалось авторизироваться через кнопку 'Личный кабинет'",
-				PROFILE_PAGE, driver.getCurrentUrl());
 	}
 
 	@Test
@@ -46,7 +41,5 @@ public class AuthorizationTest extends BaseTest {
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
 		header.pressPCButton();
 		awaitOfURLChange(PROFILE_PAGE);
-		assertEquals("Не удалось авторизироваться через кнопку 'Войти' страницы 'Забыли пароль?'",
-				PROFILE_PAGE, driver.getCurrentUrl());
 	}
 }

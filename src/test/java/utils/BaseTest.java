@@ -16,27 +16,25 @@ import static api.api.CreateUserAPI.deleteUserAPI;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
 
 public class BaseTest {
-		protected WebDriver driver;
+    protected WebDriver driver;
 
-		protected MainPage mainPage;
-		protected LoginPage loginPage;
-		protected RegisterPage regPage;
-        protected AccountProfilePage accountProfilePage;
-        protected Header header;
-        protected ForgotPasswordPage forgotPasswordPage;
+    protected MainPage mainPage;
+    protected LoginPage loginPage;
+    protected RegisterPage regPage;
+    protected AccountProfilePage accountProfilePage;
+    protected Header header;
+    protected ForgotPasswordPage forgotPasswordPage;
 
     @Before
     public void beforeEachTest (){
         String browser = System.getenv("BROWSER");
         driver = WebDriverFactory.getDriver(browser == null ? "chrome" : browser);
-
-
-				this.mainPage = new MainPage(driver);
-				this.loginPage = new LoginPage(driver);
-				this.regPage = new RegisterPage(driver);
-                this.accountProfilePage = new AccountProfilePage(driver);
-                this.header = new Header(driver);
-                this.forgotPasswordPage = new ForgotPasswordPage(driver);
+            this.mainPage = new MainPage(driver);
+            this.loginPage = new LoginPage(driver);
+            this.regPage = new RegisterPage(driver);
+            this.accountProfilePage = new AccountProfilePage(driver);
+            this.header = new Header(driver);
+            this.forgotPasswordPage = new ForgotPasswordPage(driver);
     }
 
     protected Generators userDataGenerator = new Generators();
