@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BasePage;
 
+import java.time.Duration;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 
@@ -14,12 +16,11 @@ public class AccountProfilePage extends BasePage {
         super(driver);
     }
 
-    private final String exitButtonText = "Выход";
-    private final By exitButton = By.xpath(mainXPath + "//li[3]/button[text()='"+ exitButtonText +"']");
+    private final By exitButton = By.xpath("//button[text()='Выход']");
 
     @Step("Нажатие на кнопку 'Выход' в личном кабинете")
     public void clickExitButton() {
-        new WebDriverWait(driver, 5).until(visibilityOfElementLocated(exitButton));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(visibilityOfElementLocated(exitButton));
     	driver.findElement(exitButton).click();
     }
 }

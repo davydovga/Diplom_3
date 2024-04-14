@@ -16,6 +16,8 @@ public class ForgotPasswordPage extends BasePage {
 
     @Step("Переход по ссылке ведущей на страницу авторизации")
     public void clickEnterLink(){
+        hideElementForFirefox();
+
         driver.findElement(enterLink).click();
     }
 }

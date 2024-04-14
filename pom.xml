@@ -21,7 +21,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.6.3</version>
+            <version>5.8.0</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>  <!-- declare the exclusion here -->
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>4.19.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

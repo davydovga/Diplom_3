@@ -28,6 +28,8 @@ public class RegisterPage extends BasePage {
 
 	@Step("Нажатие кнопки ррегистрация")
 	public void pressRegistrationButton() {
+		hideElementForFirefox();
+
 		String registrationText = "Зарегистрироваться";
 		driver.findElement(findButtonWith(registrationText)).click();
 	}

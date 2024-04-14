@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
 
+import java.time.Duration;
+
 import static api.api.CreateUserAPI.createUserAPI;
 import static api.api.CreateUserAPI.deleteUserAPI;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
@@ -28,7 +30,7 @@ public class BaseTest {
     protected ForgotPasswordPage forgotPasswordPage;
 
     @Before
-    public void beforeEachTest () throws InterruptedException {
+    public void beforeEachTest () {
         String browser = System.getenv("BROWSER");
         driver = WebDriverFactory.getDriver(browser == null ? "chrome" : browser);
             this.mainPage = new MainPage(driver);
@@ -47,7 +49,7 @@ public class BaseTest {
     @Step("Ожидание загрузки страницы")
     public void assertCurrentPageIs(String URL){
         try {
-            new WebDriverWait(driver, 60).until(urlContains(URL));
+            new WebDriverWait(driver, Duration.ofSeconds(5)).until(urlContains(URL));
         } catch (TimeoutException timeOut){
             System.out.println("Время ожидания загрузки страницы " + URL + " превысило допустимое");
             Assert.fail();

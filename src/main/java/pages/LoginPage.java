@@ -17,12 +17,16 @@ public class LoginPage extends BasePage {
 	private final By enterButton = By.xpath(formPage + "//button");
 
   	public void setUserAuthData(String login,String password){
+		hideElementForFirefox();
+
 	  	driver.findElement(inputEmail).sendKeys(login);
 	  	driver.findElement(inputPassword).sendKeys(password);
 	  	pressEnterButton();
   	}
 
   	public void pressEnterButton(){
+		hideElementForFirefox();
+
 	  	driver.findElement(enterButton).click();
   	}
 }

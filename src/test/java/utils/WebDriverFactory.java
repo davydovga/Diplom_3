@@ -13,12 +13,13 @@ public class WebDriverFactory {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                options.setHeadless(true);
+                options.addArguments("--headless");
+                options.addArguments("start-maximized");
                 return new ChromeDriver(options);
             case "mozilla":
                 WebDriverManager.firefoxdriver().browserVersion("120.0.1").setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setHeadless(true);
+                firefoxOptions.addArguments("--headless");
                 return new FirefoxDriver(firefoxOptions);
             default:
                 throw new IllegalArgumentException("Неизвестный браузер");
