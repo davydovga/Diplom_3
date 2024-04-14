@@ -33,7 +33,7 @@ public class MainPageTest extends BaseTest {
 
     @Test
     @DisplayName("Тест проверяет что при переходе на раздел отображаются нужные ингридиенты")
-    @Description("")
+    @Description("Тест пробегает по каждому разделу и сверяет что элеемент помечен как 'current'")
     public void ingredientsOnPageTest(){
         driver.get(MAIN_PAGE);
         mainPage.clickSaucesSpanAndCheckSelected();
