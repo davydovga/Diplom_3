@@ -16,7 +16,6 @@ public class Header extends BasePage {
 
     private final String lkButtonText = "Личный Кабинет";
     private final By headerPCButton = By.xpath("//a/p[text()='"+lkButtonText+"']");
-    private final By headerPCButton1 = By.xpath("*//*[@href='/account']");
     private final By burgerButton = By.xpath(".//nav/div/a");
     private final By constructorButton = By.xpath(".//ul/li[1]/a");
 
