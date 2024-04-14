@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.BasePage;
 
-public class Header extends BasePage {
 
+public class Header extends BasePage {
     public Header(WebDriver driver) {
         super(driver);
     }

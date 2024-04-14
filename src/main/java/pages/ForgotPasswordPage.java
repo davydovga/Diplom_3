@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.BasePage;
 
-public class ForgotPasswordPage extends BasePage {
 
+public class ForgotPasswordPage extends BasePage {
     public ForgotPasswordPage(WebDriver driver) {
         super(driver);
     }
@@ -14,11 +14,8 @@ public class ForgotPasswordPage extends BasePage {
     private final String enterText = "Войти";
     private final By enterLink = By.xpath(".//a[text()='"+ enterText +"']");
 
-
     @Step("Переход по ссылке ведущей на страницу авторизации")
     public void clickEnterLink(){
         driver.findElement(enterLink).click();
     }
-
-
 }

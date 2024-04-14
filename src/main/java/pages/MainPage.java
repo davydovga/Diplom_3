@@ -1,8 +1,9 @@
 package pages;
 
-
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import utils.BasePage;
 
 
@@ -12,37 +13,36 @@ public class MainPage extends BasePage {
 	}
 
 	private final By BunsSpan = By.xpath(mainXPath + "/section[1]//div[1]/span");
-	private final String BunsSpanText = "Булки";
+	private final By selectedBunSpan = By.xpath(".//div[1][contains(@class, 'tab_type_current')]");
 
 	private final By SaucesSpan = By.xpath(mainXPath + "/section[1]//div[2]/span");
-	private final String SaucesSpanText = "Соусы";
+	private final By selectedSaucesSpan = By.xpath(".//div[2][contains(@class, 'tab_type_current')]");
 
 	private final By FillingsSpan = By.xpath(mainXPath + "/section[1]//div[3]/span");
-	private final String FillingsSpanText = "Начинки";
+	private final By selectedFillingsSpan = By.xpath(".//div[3][contains(@class, 'tab_type_current')]");
 
 	private final String loginButtonText = "Войти в аккаунт";
 	private final By loginButton = findButtonWith(loginButtonText);
-
-	private final String createOrderButtonText = "Оформить заказ";
-	private final By createOrderButton = findButtonWith(createOrderButtonText);
 
 	public void clickLoginButton() {
 		driver.findElement(loginButton).click();
 	}
 
-	public void clickCreateOrderButton() {
-		driver.findElement(createOrderButton).click();
-	}
-
-	public void clickBunsSpan() {
+	@Step("Нажатие на 'Булки' и проверка что выбран нужный элемент")
+	public void clickBunsSpanAndCheckSelected() {
 		driver.findElement(BunsSpan).click();
+		driver.findElement(selectedBunSpan);
 	}
 
-	public void clickSaucesSpan() {
+	@Step("Нажатие на 'Соусы' и проверка что выбран нужный элемент")
+	public void clickSaucesSpanAndCheckSelected() {
 		driver.findElement(SaucesSpan).click();
+		driver.findElement(selectedSaucesSpan);
 	}
 
-	public void clickFillingsSpan() {
+	@Step("Нажатие на 'Начинки' и проверка что выбран нужный элемент")
+	public void clickFillingsSpanAndCheckSelected() {
 		driver.findElement(FillingsSpan).click();
+		driver.findElement(selectedFillingsSpan);
 	}
 }

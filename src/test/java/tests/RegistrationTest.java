@@ -42,6 +42,7 @@ public class RegistrationTest extends BaseTest {
         driver.get(REGISTER_PAGE);//Открытие страницы регистрации
         regPage.setUserDataOnPage(createUserBadPassword.getEmail(), createUserBadPassword.getPassword(), createUserBadPassword.getName()); //Заполнение формы регистрации
         regPage.pressRegistrationButton(); //Нажатие кнопки "Зарегистрироваться" на странице регистрации
-        regPage.checkPasswordError(); //Проверка отображения ошибки
+
+        regPage.checkPasswordError();//Проверка отображения ошибки
     }
 }

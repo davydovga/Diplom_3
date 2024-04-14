@@ -8,7 +8,6 @@ import static io.restassured.RestAssured.given;
 
 
 public class BaseAPI {
-
     public static Response postReq(Object body, String endpoint) {
         return given()
                 .baseUri(BASE_URI)
@@ -16,15 +15,6 @@ public class BaseAPI {
                 .body(body)
                 .when()
                 .post(endpoint);
-    }
-
-    public static Response getReq(String endpoint, String token){
-        return given()
-                .auth().oauth2(token)
-                .contentType(ContentType.JSON)
-                .baseUri(BASE_URI)
-                .when()
-                .get(endpoint);
     }
 
     public static Response deleteReq(String endpoint, String token) {

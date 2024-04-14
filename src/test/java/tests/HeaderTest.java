@@ -3,13 +3,13 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BaseTest;
 
 import static configuration.URL.*;
 
 
 public class HeaderTest extends BaseTest {
-
     @Test
     @DisplayName("Тест перехода в личный кабинет с авторизацией")
     @Description("Тест проверяет, что авторизированный пользователь, при нажатии на кнопку 'Личный Кабиент', попадает в свой ЛК")

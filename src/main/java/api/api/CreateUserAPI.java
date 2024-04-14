@@ -8,9 +8,8 @@ import static api.api.BaseAPI.deleteReq;
 import static api.api.BaseAPI.postReq;
 import static configuration.Endpoints.*;
 
+
 public class CreateUserAPI {
-
-
     @Step("Вызов API регистрации пользователя")
     public static Response createUserAPI(CreateUserReq body){
         return postReq(body, CREATE_USER_ENDPOINT);

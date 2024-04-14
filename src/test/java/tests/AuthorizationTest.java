@@ -5,16 +5,18 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import utils.BaseTest;
 
+import java.util.concurrent.TimeUnit;
+
 import static configuration.URL.*;
 
 
 public class AuthorizationTest extends BaseTest {
-
 	@Test
 	@DisplayName("Тест авторизации с главной страницы через кнопку 'Войти в аккаунт'")
 	@Description("Тест переходит на главную страницу сайта, нажимает кнопку 'Войти в аккаунт' и авторизируется")
 	public void authFromMainPageTest() {
 		driver.get(MAIN_PAGE);
+
 		mainPage.clickLoginButton();
 		loginPage.setUserAuthData(createUser.getEmail(), createUser.getPassword());
 

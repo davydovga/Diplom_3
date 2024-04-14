@@ -5,11 +5,10 @@ import api.responses.CreateUserResponse;
 import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 
-public class Generators {
 
+public class Generators {
     Faker faker = new Faker();
-    
-    //Геренатор пользователя
+
     public CreateUserReq createUser(){
         return new CreateUserReq(
                 faker.internet().emailAddress(),

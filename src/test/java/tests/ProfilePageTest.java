@@ -10,7 +10,6 @@ import static configuration.URL.PROFILE_PAGE;
 
 
 public class ProfilePageTest extends BaseTest {
-
     @Test
     @DisplayName("Тест кнопки выйти в личном кабинете пользователя")
     @Description("Тест нажимает на кнопку 'Выйти' и проверяет что пользователь переадресован на страницу авторизации")
