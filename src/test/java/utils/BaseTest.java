@@ -12,8 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
 
-import java.util.concurrent.TimeUnit;
-
 import static api.api.CreateUserAPI.createUserAPI;
 import static api.api.CreateUserAPI.deleteUserAPI;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;

@@ -3,7 +3,6 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BaseTest;
 
 import static configuration.URL.*;

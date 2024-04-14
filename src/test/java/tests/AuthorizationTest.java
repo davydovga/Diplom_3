@@ -5,8 +5,6 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import utils.BaseTest;
 
-import java.util.concurrent.TimeUnit;
-
 import static configuration.URL.*;
 
 
