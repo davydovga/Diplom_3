@@ -12,7 +12,6 @@ public class MainPage extends BasePage {
 		super(driver);
 	}
 
-	private final By BunsSpan = By.xpath(mainXPath + "/section[1]//div[1]/span");
 	private final By selectedBunSpan = By.xpath(".//div[1][contains(@class, 'tab_type_current')]");
 
 	private final By SaucesSpan = By.xpath(mainXPath + "/section[1]//div[2]/span");
@@ -28,19 +27,6 @@ public class MainPage extends BasePage {
 		hideElementForFirefox();
 
 		driver.findElement(loginButton).click();
-	}
-
-	@Step("Нажатие на 'Булки' и проверка что выбран нужный элемент")
-	public void clickBunsSpan() {
-		try{
-			hideElementForFirefox();
-
-			driver.findElement(SaucesSpan).click();
-			driver.findElement(BunsSpan).click();
-		} catch (NoSuchElementException noSuchElementException) {
-			System.out.println("Проблемы с отображением элементов после нажатия на 'Булки' в конструкторе заказа.");
-			noSuchElementException.notify();
-		}
 	}
 
 	@Step("Метод проверяет что текущий элемент 'Булки'")
