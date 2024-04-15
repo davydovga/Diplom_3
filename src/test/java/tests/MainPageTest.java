@@ -7,6 +7,7 @@ import utils.BaseTest;
 
 import static configuration.URL.LOGIN_PAGE;
 import static configuration.URL.MAIN_PAGE;
+import static org.junit.Assert.assertTrue;
 
 
 public class MainPageTest extends BaseTest {
@@ -31,12 +32,32 @@ public class MainPageTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Тест проверяет что при переходе на раздел отображаются нужные ингридиенты")
+    @DisplayName("Тест проверяет что при переходе на раздел 'Соусы' отображаются нужные ингридиенты")
     @Description("Тест пробегает по каждому разделу и сверяет что элеемент помечен как 'current'")
-    public void ingredientsOnPageTest(){
+    public void visibilitySaucesOnPageTest(){
         driver.get(MAIN_PAGE);
-        mainPage.clickSaucesSpanAndCheckSelected();
-        mainPage.clickFillingsSpanAndCheckSelected();
-        mainPage.clickBunsSpanAndCheckSelected();
+        mainPage.clickSaucesSpan();
+
+        assertTrue("Элемент 'Соусы' не отобразился",mainPage.isCurrentElementSauces());
+    }
+
+    @Test
+    @DisplayName("Тест проверяет что при переходе на раздел 'Начинки' отображаются нужные ингридиенты")
+    @Description("Тест пробегает по каждому разделу и сверяет что элеемент помечен как 'current'")
+    public void visibilityFillingsOnPageTest(){
+        driver.get(MAIN_PAGE);
+        mainPage.clickFillingsSpan();
+
+        assertTrue("Элемент 'Начинки' не отобразился", mainPage.isCurrentElementFillings());
+    }
+
+    @Test
+    @DisplayName("Тест проверяет что при переходе на раздел 'Булки' отображаются нужные ингридиенты")
+    @Description("Тест пробегает по каждому разделу и сверяет что элеемент помечен как 'current'")
+    public void visibilityBunsOnPageTest(){
+        driver.get(MAIN_PAGE);
+        mainPage.clickBunsSpan();
+
+        assertTrue("Элемент 'Булки' не отобразился",mainPage.isCurrentElementBuns());
     }
 }
