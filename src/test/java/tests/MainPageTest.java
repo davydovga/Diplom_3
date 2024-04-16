@@ -56,6 +56,7 @@ public class MainPageTest extends BaseTest {
     @Description("Тест пробегает по каждому разделу и сверяет что элеемент помечен как 'current'")
     public void visibilityBunsOnPageTest(){
         driver.get(MAIN_PAGE);
+        mainPage.clickSaucesSpan();
         mainPage.clickBunsSpan();
 
         assertTrue("Элемент 'Булки' не отобразился",mainPage.isCurrentElementBuns());

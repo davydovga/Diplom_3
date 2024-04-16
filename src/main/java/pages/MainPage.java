@@ -35,7 +35,6 @@ public class MainPage extends BasePage {
 		try{
 			hideElementForFirefox();
 
-			driver.findElement(SaucesSpan).click();
 			driver.findElement(BunsSpan).click();
 		} catch (NoSuchElementException noSuchElementException) {
 			System.out.println("Проблемы с отображением элементов после нажатия на 'Булки' в конструкторе заказа.");
